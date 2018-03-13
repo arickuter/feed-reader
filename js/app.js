@@ -21,6 +21,22 @@ var allFeeds = [{
   url: 'http://feeds.feedburner.com/udacity-linear-digressions'
 }];
 
+function checkUrl() {
+  for (i = 0; i < allFeeds.length; i++) {
+    if (this.hasOwnProperty('url') && this.url.length > 0 && this.url.includes('http://')) {
+      return true;
+    }
+  }
+}
+
+function checkName() {
+  for (i = 0; i < allFeeds.length; i++) {
+    if (this.hasOwnProperty('url') && this.name.length > 0) {
+      return true;
+    }
+  }
+}
+
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
