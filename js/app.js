@@ -37,6 +37,24 @@ function checkName() {
   }
 }
 
+describe('The menu', function() {
+  it('element is hidden by default', function() {
+    expect(hiddenMenu()).toEqual(true);
+  });
+  it('opens and closes when clicked', function() {
+    
+  });
+});
+
+// Checks that the menu is hidden by default
+function hiddenMenu() {
+  if (document.body.classList.contains('menu-hidden')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
