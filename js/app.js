@@ -52,6 +52,25 @@ describe('The menu', function() {
   });
 });
 
+describe('Initial Entries', function() {
+  var checker = false;
+  beforeEach(function(done) {
+    loadFeed(0, function() {
+      var feedElems = $('.feed').children().children();
+      for (i = 0; i < feedElems.length; i++) {
+        if (feedElems[i].className === 'entry') {
+          checker = true;
+          done();
+          break;
+        }
+      }
+    });
+  });
+  it('There is at least one .entry element in .feed container', function() {
+    expect(checker).toEqual(true);
+  });
+});
+
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
