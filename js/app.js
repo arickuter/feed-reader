@@ -71,6 +71,22 @@ describe('Initial Entries', function() {
   });
 });
 
+describe('New Feed Selection', function() {
+  var checker = false;
+  beforeEach(function(done) {
+    loadFeed(0, function() {
+      var feedElems = $('.feed').children().children();
+      if (feedElems.length > 0) {
+        checker = true;
+        done();
+      }
+    });
+  });
+  it('new content is actually loaded', function() {
+    expect(checker).toEqual(true);
+  });
+});
+
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
