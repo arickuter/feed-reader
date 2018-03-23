@@ -21,21 +21,37 @@ var allFeeds = [{
   url: 'http://feeds.feedburner.com/udacity-linear-digressions'
 }];
 
-function checkUrl() {
-  for (i = 0; i < allFeeds.length; i++) {
-    if (this.hasOwnProperty('url') && this.url.length > 0 && this.url.includes('http://')) {
-      return true;
+describe('allFeeds objects', function() {
+  var checker = false;
+  var checkerOne = false;
+  beforeAll(function() {
+    for (i = 0; i < allFeeds.length; i++) {
+      if (allFeeds[i].hasOwnProperty('url') && allFeeds[i].url.length > 0 && allFeeds[i].url.includes('http://') && allFeeds[i].url.includes('.')) {
+        checker = true;
+      } else {
+        checker = false;
+        break;
+      }
     }
-  }
-}
 
-function checkName() {
-  for (i = 0; i < allFeeds.length; i++) {
-    if (this.hasOwnProperty('url') && this.name.length > 0) {
-      return true;
+    for (j = 0; j < allFeeds.length; j++) {
+      if (allFeeds[j].hasOwnProperty('name') && allFeeds[j].name.length > 0) {
+        checkerOne = true;
+      } else {
+        checkerOne = false;
+        break;
+      }
     }
-  }
-}
+  });
+
+  it('has a url', function() {
+    expect(checker).toEqual(true);
+  });
+
+  it('has a name', function() {
+    expect(checkerOne).toEqual(true);
+  });
+});
 
 describe('The menu', function() {
   it('element is hidden by default', function() {
@@ -54,7 +70,7 @@ describe('The menu', function() {
 
 describe('Initial Entries', function() {
   var checker = false;
-  beforeEach(function(done) {
+  beforeAll(function(done) {
     loadFeed(0, function() {
       var feedElems = $('.feed').children().children();
       for (i = 0; i < feedElems.length; i++) {
@@ -73,7 +89,7 @@ describe('Initial Entries', function() {
 
 describe('New Feed Selection', function() {
   var checker = false;
-  beforeEach(function(done) {
+  beforeAll(function(done) {
     loadFeed(0, function() {
       var feedElems = $('.feed').children().children();
       if (feedElems.length > 0) {
