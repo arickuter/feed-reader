@@ -21,11 +21,21 @@ var allFeeds = [{
   url: 'http://feeds.feedburner.com/udacity-linear-digressions'
 }];
 
+// Test that url and name field is defined in each object and they have content
 describe('allFeeds objects', function() {
   var checker = false;
   var checkerOne = false;
   beforeAll(function() {
+    if (typeof(checker) == 'undefined') {
+      throw 'checker undefined';
+    }
+    if (typeof(checkerOne) == 'undefined') {
+      throw 'checkerOne undefined';
+    }
     for (i = 0; i < allFeeds.length; i++) {
+      if (typeof(allFeeds[i]) == 'undefined') {
+        throw 'out of bound array access';
+      }
       if (allFeeds[i].hasOwnProperty('url') && allFeeds[i].url.length > 0 && allFeeds[i].url.includes('http://') && allFeeds[i].url.includes('.')) {
         checker = true;
       } else {
@@ -35,6 +45,9 @@ describe('allFeeds objects', function() {
     }
 
     for (j = 0; j < allFeeds.length; j++) {
+      if (typeof(allFeeds[j]) == 'undefined') {
+        throw 'out of bound array access';
+      }
       if (allFeeds[j].hasOwnProperty('name') && allFeeds[j].name.length > 0) {
         checkerOne = true;
       } else {
@@ -44,33 +57,47 @@ describe('allFeeds objects', function() {
     }
   });
 
-  it('has a url', function() {
+  it('has a url and content', function() {
     expect(checker).toEqual(true);
   });
 
-  it('has a name', function() {
+  it('has a name and content', function() {
     expect(checkerOne).toEqual(true);
   });
 });
 
+// Test that the menu is hidden by default and opens and closes when clicked
 describe('The menu', function() {
   it('element is hidden by default', function() {
     var bodyObj = document.body.className;
+    if (typeof(bodyObj) == 'undefined') {
+      throw 'bodyObj undefined';
+    }
     expect(bodyObj).toEqual('menu-hidden');
   });
   it('opens and closes when clicked', function() {
     $('.menu-icon-link').click();
     var bodyObj = document.body.className;
+    if (typeof(bodyObj) == 'undefined') {
+      throw 'bodyObj undefined';
+    }
     expect(bodyObj).toEqual('');
     $('.menu-icon-link').click();
     bodyObj = document.body.className;
+    if (typeof(bodyObj) == 'undefined') {
+      throw 'bodyObj undefined';
+    }
     expect(bodyObj).toEqual('menu-hidden');
   });
 });
 
+// Test if there is at least one .entry element in .feed container
 describe('Initial Entries', function() {
   var checker = false;
   beforeAll(function(done) {
+    if (typeof(checker) == 'undefined') {
+      throw 'checker undefined';
+    }
     loadFeed(0, function() {
       var feedElems = $('.feed').children().children();
       for (i = 0; i < feedElems.length; i++) {
@@ -87,11 +114,18 @@ describe('Initial Entries', function() {
   });
 });
 
+// Tests that new content is loaded and changes when loadFeed function is called
 describe('New Feed Selection', function() {
   var checker = false;
   beforeAll(function(done) {
+    if (typeof(checker) == 'undefined') {
+      throw 'checker undefined';
+    }
     loadFeed(0, function() {
       var feedElems = $('.feed').children().children();
+      if (typeof(feedElems) == 'undefined') {
+        throw 'feedElems undefined';
+      }
       if (feedElems.length > 0) {
         checker = true;
         done();
