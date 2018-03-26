@@ -12,13 +12,13 @@ The tests will be run automatically on each refresh of the page
 ##The tests
 There are seven tests in total:
 
-1. Url field is defined and has content in each object
-2. Name field is defined and has content in each object
-3. Menu is hidden by default
-4. Menu opens and closes when clicked
-5. There is at least one .entry element in .feed container
-6. New content is loaded and changes when loadFeed function is run
-7. RSS Feeds are defined
+1. RSS feeds are defined
+2. RSS feeds have a url and content
+3. RSS feeds have a name and content
+4. The menu element is hidden by default
+5. The menu opens and closes when clicked
+6. Initial Entries have at least one .entry element in .feed container
+7. Content changes when a new feed is loaded
 
 ##Authors
 - Aric Kuter
