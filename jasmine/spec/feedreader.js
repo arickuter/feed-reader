@@ -33,7 +33,7 @@ $(function() {
      */
     it('has a url and content', function() {
       allFeeds.forEach(function(feed) {
-        feedName = feed.url;
+        const feedName = feed.url;
         expect(feedName).toBeDefined();
         expect(feedName).not.toBe('');
       });
@@ -45,7 +45,7 @@ $(function() {
      */
     it('has a name and content', function() {
       allFeeds.forEach(function(feed) {
-        feedName = feed.name;
+        const feedName = feed.name;
         expect(feedName).toBeDefined();
         expect(feedName).not.toBe('');
       });
@@ -55,16 +55,13 @@ $(function() {
   describe('The menu', function() {
     // Ensures menu element is hidden by default
     it('element is hidden by default', function() {
-      var bodyObj = $('body');
-      if (typeof(bodyObj) == 'undefined') {
-        throw 'bodyObj undefined';
-      }
+      const bodyObj = $('body');
       expect(bodyObj.hasClass('menu-hidden')).toEqual(true);
     });
 
     // Does the menu hide and show when clicked
     it('opens and closes when clicked', function() {
-      var classExists = $('body');
+      const classExists = $('body');
       expect(classExists.hasClass('menu-hidden')).toEqual(true);
       $('.menu-icon-link').click();
       expect(classExists.hasClass('menu-hidden')).toEqual(false);
@@ -77,7 +74,7 @@ $(function() {
      * function is called and completes its work, there is at least
      * a single .entry element within the .feed container.
      */
-    var checker = false;
+    let checker = false;
     beforeAll(function(done) {
       loadFeed(0, function() {
         var feedElems = $('.feed').children().children();
@@ -99,7 +96,7 @@ $(function() {
     /* When a new feed is loaded
      * by the loadFeed function that the content actually changes.
      */
-    var myFeed1, myFeed2, domFeed;
+    let myFeed1, myFeed2, domFeed;
     beforeAll(function(done) {
       loadFeed(0, function() {
         domFeed = $('.feed > a');
